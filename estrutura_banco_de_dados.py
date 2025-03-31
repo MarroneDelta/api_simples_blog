@@ -1,11 +1,17 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from passlib.context import CryptContext  # Para criptografar a senha de forma segura
+from werkzeug.security import generate_password_hash
+
 
 #Criar um API- Flask
 app = Flask(__name__)
 #Criar um instancia de sqlchemy
 app.config['SECRET_KEY'] = 'FDS3252!AHG%#A'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:[YOUR_PASSWORD]@db.ftngxdgwdjpynhoqemsl.supabase.co:5432/postgres'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 db: SQLAlchemy
 #Definir estrutura da tabela posdtagem
